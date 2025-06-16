@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { X, ArrowLeft, ArrowRight, MapPin } from "lucide-react"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogClose, DialogContent } from "@/components/ui/dialog"
 
 // Street photography collection with mixed orientations
 var photos = [
@@ -258,24 +258,24 @@ export default function StreetPhotography() {
         </div>
       </main>
 
-      {/* Fixed Modal Dialog - No Overflow */}
+      {/* Fixed Modal Dialog - Single Close Button */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogContent className="max-w-none w-full h-full max-h-screen bg-white border-none p-0 rounded-none overflow-hidden">
           <div className="relative w-full h-full flex flex-col overflow-hidden">
-            {/* Top Controls Bar */}
-            <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between p-4">
-              {/* Photo Counter */}
-              <div className="px-4 py-2 rounded-full bg-white/50 text-white text-sm font-mono">
-                {selectedPhoto && `${photos.findIndex((p) => p.id === selectedPhoto.id) + 1} / ${photos.length}`}
-              </div>
-
-              {/* Close Button
-              <button
+            {/* Single Close Button - Top Right */}
+            <DialogClose asChild>
+              {/* <button
                 onClick={closeModal}
-                className="p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
+                className="absolute top-4 right-4 z-50 p-3 rounded-full bg-black/60 hover:bg-black/80 text-white transition-all duration-200 backdrop-blur-sm"
               >
                 <X className="h-6 w-6" />
               </button> */}
+            </DialogClose>
+
+
+            {/* Photo Counter - Top Left */}
+            <div className="absolute top-4 left-4 z-50 px-4 py-2  text-black text-sm font-mono backdrop-blur-sm">
+              {selectedPhoto && `${photos.findIndex((p) => p.id === selectedPhoto.id) + 1} / ${photos.length}`}
             </div>
 
             {/* Main Image Container - Properly Constrained */}
@@ -288,20 +288,20 @@ export default function StreetPhotography() {
                   {/* Navigation Buttons */}
                   <button
                     onClick={() => navigatePhoto("prev")}
-                    className="absolute left-6 bottom-5 -translate-y-1/2 z-40 p-4 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
+                    className="absolute left-4 md:left-6 bottom-6 -translate-y-1/2 z-40 p-3 md:p-4 rounded-full bg-black/60 hover:bg-black/80 text-white transition-all duration-200 backdrop-blur-sm"
                   >
-                    <ArrowLeft className="h-6 w-6" />
+                    <ArrowLeft className="h-5 w-5 md:h-6 md:w-6" />
                   </button>
 
                   <button
                     onClick={() => navigatePhoto("next")}
-                    className="absolute right-6 bottom-6 -translate-y-1/2 z-40 p-4 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
+                    className="absolute right-4 md:right-6 bottom-6 -translate-y-1/2 z-40 p-3 md:p-4 rounded-full bg-black/60 hover:bg-black/80 text-white transition-all duration-200 backdrop-blur-sm"
                   >
-                    <ArrowRight className="h-6 w-6" />
+                    <ArrowRight className="h-5 w-5 md:h-6 md:w-6" />
                   </button>
 
                   {/* Main Image - Properly Sized */}
-                  <div className="w-full h-full flex items-center justify-center p-8">
+                  <div className="w-full h-full flex items-center justify-center p-4 md:p-8">
                     <Image
                       src={selectedPhoto.src || "/placeholder.svg"}
                       alt={selectedPhoto.alt}
@@ -323,13 +323,13 @@ export default function StreetPhotography() {
                 className="bg-black/90 backdrop-blur-sm text-white border-t border-white/10"
                 style={{ height: "80px" }}
               >
-                <div className="h-full flex items-center px-6">
+                <div className="h-full flex items-center px-4 md:px-6">
                   <div className="max-w-6xl mx-auto w-full flex items-center justify-between">
                     <div className="flex-1 min-w-0">
-                      <h2 className="text-xl font-light mb-1 truncate">{selectedPhoto.title}</h2>
+                      <h2 className="text-lg md:text-xl font-light mb-1 truncate">{selectedPhoto.title}</h2>
                       <div className="flex items-center gap-2 text-white/70">
                         <MapPin className="h-4 w-4 flex-shrink-0" />
-                        <span className="truncate">{selectedPhoto.location}</span>
+                        <span className="truncate text-sm md:text-base">{selectedPhoto.location}</span>
                       </div>
                     </div>
 
