@@ -93,11 +93,12 @@ var photos = [
   },
   {
     id: 13,
-    src: "/images/DSCF2758.jpg",
-    alt: "Navigation and direction in the urban maze.",
-    title: "How to get where you are going",
-    location: "Grand Central",
+    src: "/images/DSCF2938.jpg",
+    alt: "A worker's focused moment in the urban landscape.",
+    title: "Cutter #5",
+    location: "Katz Delicatessen",
   },
+
   {
     id: 14,
     src: "/images/DSCF2755.jpg",
@@ -140,17 +141,18 @@ var photos = [
     title: "Patience",
     location: "Katz Delicatessen",
   },
-  {
+    {
     id: 20,
-    src: "/images/DSCF2938.jpg",
-    alt: "A worker's focused moment in the urban landscape.",
-    title: "Cutter #5",
-    location: "Lower East Side",
+    src: "/images/DSCF2758.jpg",
+    alt: "Navigation and direction in the urban maze.",
+    title: "How to get where you are going",
+    location: "Grand Central",
   },
+  
   {
     id: 21,
     src: "/images/IMG_0470.jpg",
-    alt: "Life at the intersection of New York's busiest avenue.",
+    alt: ".",
     title: "The Corner",
     location: "5th Ave",
   },
