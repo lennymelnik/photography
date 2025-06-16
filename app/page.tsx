@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import { X, ArrowLeft, ArrowRight } from "lucide-react"
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { X, ArrowLeft, ArrowRight, MapPin } from "lucide-react"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
 
 // Street photography collection with mixed orientations
 var photos = [
@@ -17,114 +17,109 @@ var photos = [
   {
     id: 2,
     src: "/images/IMG_0333.jpg",
-    alt: "",
+    alt: "A clean, classic street scene capturing the essence of urban life.",
     title: "Clean Classic",
     location: "32nd Street",
   },
   {
     id: 3,
     src: "/images/DSCF2205.jpg",
-    alt: "",
+    alt: "A modern interpretation of the classic cowboy in an urban setting.",
     title: "Modern Cowboy",
     location: "K-Town",
   },
   {
     id: 4,
     src: "/images/DSCF2464.jpg",
-    alt: "",
+    alt: "Steam and smoke rising from the city streets creating an atmospheric scene.",
     title: "City Smoke",
-    location: "",
+    location: "Manhattan",
   },
   {
     id: 5,
     src: "/images/DSCF2497.jpg",
-    alt: "",
-    title: "",
-    location: "",
+    alt: "The energy and movement of New York City street life.",
+    title: "Urban Energy",
+    location: "Midtown",
   },
   {
     id: 6,
     src: "/images/DSCF2517-2.jpg",
-    alt: "",
-    title: "Untitiled",
-    location: "",
+    alt: "A candid moment captured between destinations.",
+    title: "Between Stops",
+    location: "Underground",
   },
   {
     id: 7,
     src: "/images/DSCF2602.jpg",
-    alt: "",
+    alt: "Two people sharing a quiet conversation in the morning rush.",
     title: "Morning Chat",
     location: "Grand Central",
   },
   {
     id: 8,
     src: "/images/DSCF2758.jpg",
-    alt: "",
+    alt: "Navigation and direction in the urban maze.",
     title: "How to get where you are going",
     location: "Grand Central",
   },
   {
     id: 9,
     src: "/images/DSCF2755.jpg",
-    alt: "",
+    alt: "The beginning of a journey through the city.",
     title: "A trip",
     location: "Grand Central",
   },
   {
     id: 10,
     src: "/images/DSCF2694.jpg",
-    alt: "",
+    alt: "Patience in the daily rhythm of city commuting.",
     title: "Waiting In Line",
     location: "Grand Central",
   },
-
-
   {
     id: 11,
     src: "/images/DSCF2831.jpg",
-    alt: "",
-    title: "",
-    location: "",
+    alt: "The constant flow and movement of urban life.",
+    title: "City Flow",
+    location: "Downtown",
   },
   {
     id: 12,
     src: "/images/DSCF2854.jpg",
-    alt: "",
-    title: "",
-    location: "",
+    alt: "Street life captured in its natural state.",
+    title: "Natural Moment",
+    location: "Brooklyn",
   },
   {
     id: 13,
     src: "/images/DSCF2906.jpg",
-    alt: "",
+    alt: "An upward perspective on urban architecture and human scale.",
     title: "Rise Up",
     location: "Madison Park",
   },
   {
     id: 14,
     src: "/images/DSCF2930.jpg",
-    alt: "",
+    alt: "The art of waiting in New York's iconic delicatessen.",
     title: "Patience",
     location: "Katz Delicatessen",
   },
   {
     id: 15,
     src: "/images/DSCF2938.jpg",
-    alt: "",
+    alt: "A worker's focused moment in the urban landscape.",
     title: "Cutter #5",
-    location: "",
+    location: "Lower East Side",
   },
- 
-
-
   {
     id: 16,
     src: "/images/IMG_0470.jpg",
-    alt: "",
+    alt: "Life at the intersection of New York's busiest avenue.",
     title: "The Corner",
     location: "5th Ave",
-  }
-];
+  },
+]
 
 export default function StreetPhotography() {
   const [selectedPhoto, setSelectedPhoto] = useState<(typeof photos)[0] | null>(null)
@@ -155,6 +150,28 @@ export default function StreetPhotography() {
     setSelectedPhoto(photos[newIndex])
   }
 
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!isModalOpen) return
+
+      switch (event.key) {
+        case "ArrowLeft":
+          navigatePhoto("prev")
+          break
+        case "ArrowRight":
+          navigatePhoto("next")
+          break
+        case "Escape":
+          closeModal()
+          break
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [isModalOpen, selectedPhoto])
+
   return (
     <div className="min-h-screen bg-zinc-50">
       {/* Header */}
@@ -170,7 +187,7 @@ export default function StreetPhotography() {
 
       {/* Gallery - Masonry Layout */}
       <main className="px-6 pb-20 max-w-7xl mx-auto">
-        <div className="columns- md:columns-2 lg:columns-3 gap-6 space-y-6">
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
           {photos.map((photo, index) => (
             <div
               key={photo.id}
@@ -179,24 +196,16 @@ export default function StreetPhotography() {
             >
               <div className="relative overflow-hidden bg-zinc-100 rounded-sm">
                 <Image
-                  src={(photo.src?photo.src.replace('images/','images/reduced/'):null) || "/placeholder.svg"}
+                  src={(photo.src ? photo.src.replace("images/", "images/reduced/") : null) || "/placeholder.svg"}
                   alt={photo.alt}
                   width={600}
                   height={400}
                   className="w-full h-auto object-cover transition-all duration-700 group-hover:scale-105 group-hover:contrast-110"
-                  quality={0}
+                  quality={85}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   style={{ aspectRatio: "auto" }}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300" />
-
-                {/* Overlay info on hover */}
-                {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <h3 className="font-medium text-lg mb-1">{photo.title}</h3>
-                    <p className="text-sm text-white/80">{photo.location}</p>
-                  </div>
-                </div> */}
               </div>
 
               {/* Photo info below image */}
@@ -214,69 +223,85 @@ export default function StreetPhotography() {
         </div>
       </main>
 
-      {/* Modal */}
-      {/* Modal */}
+      {/* Enhanced Modal Dialog */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        {/* <DialogTitle>View Photo</DialogTitle> */}
-        <DialogContent className="max-w-none w-screen h-screen bg-white border-none p-0 rounded-none">
-          <div className="relative w-full h-full flex flex-col md:flex-row">
-            {/* Image Section */}
-            <div className="flex-1 flex items-center justify-center bg-zinc-50 p-4 sm:p-6 md:p-12 overflow-hidden">
+        <DialogContent className="max-w-none w-screen h-screen bg-black border-none p-0 rounded-none">
+          <div className="relative w-full h-full flex flex-col">
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 z-50 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
+            >
+              <X className="h-6 w-6" />
+            </button>
+
+            {/* Photo Counter */}
+            <div className="absolute top-4 left-4 z-50 px-4 py-2 rounded-full bg-black/50 text-white text-sm font-mono">
+              {selectedPhoto && `${photos.findIndex((p) => p.id === selectedPhoto.id) + 1} / ${photos.length}`}
+            </div>
+
+            {/* Main Image Container */}
+            <div className="flex-1 flex items-center justify-center p-4 relative">
               {selectedPhoto && (
-                <div className="relative w-full h-full flex items-center justify-center max-h-[calc(100vh-6rem)]">
-                  {/* Navigation Buttons - Overlay on image */}
+                <>
+                  {/* Navigation Buttons */}
                   <button
                     onClick={() => navigatePhoto("prev")}
-                    className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-40 p-2 sm:p-3 rounded-full bg-white/90 hover:bg-white text-zinc-600 hover:text-zinc-900 transition-all duration-200 shadow-lg"
+                    className="absolute left-6 top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
                   >
-                    <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+                    <ArrowLeft className="h-6 w-6" />
                   </button>
 
                   <button
                     onClick={() => navigatePhoto("next")}
-                    className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-40 p-2 sm:p-3 rounded-full bg-white/90 hover:bg-white text-zinc-600 hover:text-zinc-900 transition-all duration-200 shadow-lg"
+                    className="absolute right-6 top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
                   >
-                    <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                    <ArrowRight className="h-6 w-6" />
                   </button>
 
+                  {/* Main Image */}
                   <Image
                     src={selectedPhoto.src || "/placeholder.svg"}
                     alt={selectedPhoto.alt}
                     width={1200}
                     height={800}
-                    className="max-w-[calc(100%-2rem)] max-h-[calc(100%-2rem)] w-auto h-auto object-contain"
+                    className="max-w-[calc(100%-8rem)] max-h-[calc(100%-8rem)] w-auto h-auto object-contain"
                     quality={100}
                     priority
                     style={{ aspectRatio: "auto" }}
                   />
-                </div>
+                </>
               )}
             </div>
 
-            {/* Info Panel */}
-            <div className="w-full md:w-80 bg-white border-t md:border-t-0 md:border-l border-zinc-200 flex flex-col max-h-[40%] md:max-h-full overflow-y-auto">
-              {/* Header */}
-              <div className="p-4 sm:p-6 border-b border-zinc-200 flex items-center justify-between">
-                <div className="text-xs sm:text-sm font-mono text-zinc-400 uppercase tracking-wider">
-                  {selectedPhoto && `${photos.findIndex((p) => p.id === selectedPhoto.id) + 1} / ${photos.length}`}
+            {/* Bottom Info Bar */}
+            {selectedPhoto && (
+              <div className="bg-black/80 backdrop-blur-sm text-white p-6 border-t border-white/10">
+                <div className="max-w-4xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                  <div className="flex-1">
+                    <h2 className="text-2xl font-light mb-2">{selectedPhoto.title}</h2>
+                    <div className="flex items-center gap-2 text-white/70">
+                      <MapPin className="h-4 w-4" />
+                      <span>{selectedPhoto.location}</span>
+                    </div>
+                  </div>
+                  {selectedPhoto.alt && (
+                    <div className="md:max-w-md">
+                      <p className="text-white/80 text-sm leading-relaxed">{selectedPhoto.alt}</p>
+                    </div>
+                  )}
                 </div>
               </div>
+            )}
 
-              {/* Photo Info */}
-              {selectedPhoto && (
-                <div className="p-4 sm:p-6 flex-1">
-                  <h2 className="text-xl sm:text-2xl font-light text-zinc-900 mb-2">{selectedPhoto.title}</h2>
-                  <p className="text-zinc-600 mb-4 sm:mb-6">{selectedPhoto.location}</p>
-                  <p className="text-zinc-500 text-sm leading-relaxed">
-                    {selectedPhoto.alt}
-                  </p>
-                </div>
-              )}
+            {/* Keyboard Hints */}
+            <div className="absolute bottom-20 right-6 text-white/50 text-xs space-y-1 hidden md:block">
+              <div>← → Navigate</div>
+              <div>ESC Close</div>
             </div>
           </div>
         </DialogContent>
       </Dialog>
-
 
       {/* Footer */}
       <footer className="px-6 py-8 max-w-7xl mx-auto border-t border-zinc-200">
