@@ -33,7 +33,7 @@ var photos = [
     src: "/images/DSCF2891.jpg",
     alt: "A powerful moment of civic engagement captured on the streets.",
     title: "Signs of Protest",
-    location: "K-Town",
+    location: "Madison Park",
   },
   {
     id: 5,
@@ -73,16 +73,16 @@ var photos = [
   {
     id: 10,
     src: "/images/DSCF2497.jpg",
-    alt: "The energy and movement of New York City street life.",
-    title: "Urban Energy",
+    alt: "",
+    title: "untitled",
     location: "Midtown",
   },
   {
     id: 11,
     src: "/images/DSCF2517-2.jpg",
-    alt: "A candid moment captured between destinations.",
-    title: "Between Stops",
-    location: "Underground",
+    alt: "",
+    title: "The Corner",
+    location: "Midtown",
   },
   {
     id: 12,
@@ -118,7 +118,7 @@ var photos = [
     id: 16,
     src: "/images/DSCF2854.jpg",
     alt: "Street life captured in its natural state.",
-    title: "Natural Moment",
+    title: "Untitled",
     location: "Brooklyn",
   },
   {
@@ -142,16 +142,16 @@ var photos = [
     title: "How to get where you are going",
     location: "Grand Central",
   },
-  
  
-    {
-    id: 20,
-    src: "/images/IMG_0673.jpg",
-    alt: "A homeless person sleeping across the street from a luxury furniture showroom",
-    title: "Homeless outside store",
-    location: "32nd Street",
-  },
+  //   {
+  //   id: 20,
+  //   src: "/images/IMG_0673.jpg",
+  //   alt: "A homeless person sleeping across the street from a luxury furniture showroom",
+  //   title: "Homeless outside store",
+  //   location: "32nd Street",
+  // },
 ]
+
 
 export default function StreetPhotography() {
   const [selectedPhoto, setSelectedPhoto] = useState<(typeof photos)[0] | null>(null)
