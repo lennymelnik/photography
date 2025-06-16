@@ -30,90 +30,125 @@ var photos = [
   },
   {
     id: 4,
+    src: "/images/DSCF2891.jpg",
+    alt: "A powerful moment of civic engagement captured on the streets.",
+    title: "Signs of Protest",
+    location: "K-Town",
+  },
+  {
+    id: 5,
+    src: "/images/IMG_0497.jpg",
+    alt: "A vehicle departing from the urban landscape.",
+    title: "Pulling Out",
+    location: "Madison Park",
+  },
+  {
+    id: 6,
+    src: "/images/IMG_0527.jpg",
+    alt: "Looking up at the towering architecture that defines the city skyline.",
+    title: "Sky Scraper",
+    location: "Madison Park",
+  },
+  {
+    id: 7,
+    src: "/images/IMG_0673.jpg",
+    alt: "A homeless person sleeping across the street from a luxury furniture showroom",
+    title: "Homeless outside store",
+    location: "32nd Street",
+  },
+  {
+    id: 8,
+    src: "/images/IMG_0702.jpg",
+    alt: "A man stumbling",
+    title: "Stumbling",
+    location: "31st Street",
+  },
+  {
+    id: 9,
     src: "/images/DSCF2464.jpg",
     alt: "Steam and smoke rising from the city streets creating an atmospheric scene.",
     title: "City Smoke",
     location: "Manhattan",
   },
   {
-    id: 5,
+    id: 10,
     src: "/images/DSCF2497.jpg",
     alt: "The energy and movement of New York City street life.",
     title: "Urban Energy",
     location: "Midtown",
   },
   {
-    id: 6,
+    id: 11,
     src: "/images/DSCF2517-2.jpg",
     alt: "A candid moment captured between destinations.",
     title: "Between Stops",
     location: "Underground",
   },
   {
-    id: 7,
+    id: 12,
     src: "/images/DSCF2602.jpg",
     alt: "Two people sharing a quiet conversation in the morning rush.",
     title: "Morning Chat",
     location: "Grand Central",
   },
   {
-    id: 8,
+    id: 13,
     src: "/images/DSCF2758.jpg",
     alt: "Navigation and direction in the urban maze.",
     title: "How to get where you are going",
     location: "Grand Central",
   },
   {
-    id: 9,
+    id: 14,
     src: "/images/DSCF2755.jpg",
     alt: "The beginning of a journey through the city.",
     title: "A trip",
     location: "Grand Central",
   },
   {
-    id: 10,
+    id: 15,
     src: "/images/DSCF2694.jpg",
     alt: "Patience in the daily rhythm of city commuting.",
     title: "Waiting In Line",
     location: "Grand Central",
   },
   {
-    id: 11,
+    id: 16,
     src: "/images/DSCF2831.jpg",
     alt: "The constant flow and movement of urban life.",
     title: "City Flow",
     location: "Downtown",
   },
   {
-    id: 12,
+    id: 17,
     src: "/images/DSCF2854.jpg",
     alt: "Street life captured in its natural state.",
     title: "Natural Moment",
     location: "Brooklyn",
   },
   {
-    id: 13,
+    id: 18,
     src: "/images/DSCF2906.jpg",
     alt: "An upward perspective on urban architecture and human scale.",
     title: "Rise Up",
     location: "Madison Park",
   },
   {
-    id: 14,
+    id: 19,
     src: "/images/DSCF2930.jpg",
     alt: "The art of waiting in New York's iconic delicatessen.",
     title: "Patience",
     location: "Katz Delicatessen",
   },
   {
-    id: 15,
+    id: 20,
     src: "/images/DSCF2938.jpg",
     alt: "A worker's focused moment in the urban landscape.",
     title: "Cutter #5",
     location: "Lower East Side",
   },
   {
-    id: 16,
+    id: 21,
     src: "/images/IMG_0470.jpg",
     alt: "Life at the intersection of New York's busiest avenue.",
     title: "The Corner",
@@ -223,25 +258,31 @@ export default function StreetPhotography() {
         </div>
       </main>
 
-      {/* Enhanced Modal Dialog */}
+      {/* Fixed Modal Dialog - No Overflow */}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-none w-screen h-screen bg-black border-none p-0 rounded-none">
-          <div className="relative w-full h-full flex flex-col">
-            {/* Close Button */}
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 z-50 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
-            >
-              <X className="h-6 w-6" />
-            </button>
+        <DialogContent className="max-w-none w-full h-full max-h-screen bg-white border-none p-0 rounded-none overflow-hidden">
+          <div className="relative w-full h-full flex flex-col overflow-hidden">
+            {/* Top Controls Bar */}
+            <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between p-4">
+              {/* Photo Counter */}
+              <div className="px-4 py-2 rounded-full bg-white/50 text-white text-sm font-mono">
+                {selectedPhoto && `${photos.findIndex((p) => p.id === selectedPhoto.id) + 1} / ${photos.length}`}
+              </div>
 
-            {/* Photo Counter */}
-            <div className="absolute top-4 left-4 z-50 px-4 py-2 rounded-full bg-black/50 text-white text-sm font-mono">
-              {selectedPhoto && `${photos.findIndex((p) => p.id === selectedPhoto.id) + 1} / ${photos.length}`}
+              {/* Close Button
+              <button
+                onClick={closeModal}
+                className="p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
+              >
+                <X className="h-6 w-6" />
+              </button> */}
             </div>
 
-            {/* Main Image Container */}
-            <div className="flex-1 flex items-center justify-center p-4 relative">
+            {/* Main Image Container - Properly Constrained */}
+            <div
+              className="flex-1 flex items-center justify-center relative overflow-hidden"
+              style={{ height: "calc(100vh - 140px)" }}
+            >
               {selectedPhoto && (
                 <>
                   {/* Navigation Buttons */}
@@ -259,46 +300,48 @@ export default function StreetPhotography() {
                     <ArrowRight className="h-6 w-6" />
                   </button>
 
-                  {/* Main Image */}
-                  <Image
-                    src={selectedPhoto.src || "/placeholder.svg"}
-                    alt={selectedPhoto.alt}
-                    width={1200}
-                    height={800}
-                    className="max-w-[calc(100%-8rem)] max-h-[calc(100%-8rem)] w-auto h-auto object-contain"
-                    quality={100}
-                    priority
-                    style={{ aspectRatio: "auto" }}
-                  />
+                  {/* Main Image - Properly Sized */}
+                  <div className="w-full h-full flex items-center justify-center p-8">
+                    <Image
+                      src={selectedPhoto.src || "/placeholder.svg"}
+                      alt={selectedPhoto.alt}
+                      width={1200}
+                      height={800}
+                      className="max-w-full max-h-full w-auto h-auto object-contain"
+                      quality={100}
+                      priority
+                      style={{ aspectRatio: "auto" }}
+                    />
+                  </div>
                 </>
               )}
             </div>
 
-            {/* Bottom Info Bar */}
+            {/* Bottom Info Bar - Fixed Height */}
             {selectedPhoto && (
-              <div className="bg-black/80 backdrop-blur-sm text-white p-6 border-t border-white/10">
-                <div className="max-w-4xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                  <div className="flex-1">
-                    <h2 className="text-2xl font-light mb-2">{selectedPhoto.title}</h2>
-                    <div className="flex items-center gap-2 text-white/70">
-                      <MapPin className="h-4 w-4" />
-                      <span>{selectedPhoto.location}</span>
+              <div
+                className="bg-black/90 backdrop-blur-sm text-white border-t border-white/10"
+                style={{ height: "80px" }}
+              >
+                <div className="h-full flex items-center px-6">
+                  <div className="max-w-6xl mx-auto w-full flex items-center justify-between">
+                    <div className="flex-1 min-w-0">
+                      <h2 className="text-xl font-light mb-1 truncate">{selectedPhoto.title}</h2>
+                      <div className="flex items-center gap-2 text-white/70">
+                        <MapPin className="h-4 w-4 flex-shrink-0" />
+                        <span className="truncate">{selectedPhoto.location}</span>
+                      </div>
+                    </div>
+
+                    {/* Keyboard Hints - Desktop Only */}
+                    <div className="hidden lg:flex items-center gap-4 text-white/50 text-xs ml-6">
+                      <span>← → Navigate</span>
+                      <span>ESC Close</span>
                     </div>
                   </div>
-                  {selectedPhoto.alt && (
-                    <div className="md:max-w-md">
-                      <p className="text-white/80 text-sm leading-relaxed">{selectedPhoto.alt}</p>
-                    </div>
-                  )}
                 </div>
               </div>
             )}
-
-            {/* Keyboard Hints */}
-            <div className="absolute bottom-20 right-6 text-white/50 text-xs space-y-1 hidden md:block">
-              <div>← → Navigate</div>
-              <div>ESC Close</div>
-            </div>
           </div>
         </DialogContent>
       </Dialog>
