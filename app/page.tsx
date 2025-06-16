@@ -305,7 +305,7 @@ export default function StreetPhotography() {
                   {/* Main Image - Properly Sized */}
                   <div className="w-full h-full flex items-center justify-center p-4 md:p-8">
                     <Image
-                  src={(selectedPhoto.src ? selectedPhoto.src.replace("images/", "images/regular/") : null) || "/placeholder.svg"}
+                  src={(selectedPhoto.src ? selectedPhoto.src.replace("images/", "images/normal/") : null) || "/placeholder.svg"}
                       alt={selectedPhoto.alt}
                       width={1200}
                       height={800}
