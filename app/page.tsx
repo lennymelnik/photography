@@ -49,12 +49,12 @@ var photos = [
     title: "Sky Scraper",
     location: "Madison Park",
   },
-  {
+ {
     id: 7,
-    src: "/images/IMG_0673.jpg",
-    alt: "A homeless person sleeping across the street from a luxury furniture showroom",
-    title: "Homeless outside store",
-    location: "32nd Street",
+    src: "/images/IMG_0470.jpg",
+    alt: ".",
+    title: "The Corner",
+    location: "5th Ave",
   },
   {
     id: 8,
@@ -113,48 +113,43 @@ var photos = [
     title: "Waiting In Line",
     location: "Grand Central",
   },
+
   {
     id: 16,
-    src: "/images/DSCF2831.jpg",
-    alt: "The constant flow and movement of urban life.",
-    title: "City Flow",
-    location: "Downtown",
-  },
-  {
-    id: 17,
     src: "/images/DSCF2854.jpg",
     alt: "Street life captured in its natural state.",
     title: "Natural Moment",
     location: "Brooklyn",
   },
   {
-    id: 18,
+    id: 17,
     src: "/images/DSCF2906.jpg",
     alt: "An upward perspective on urban architecture and human scale.",
     title: "Rise Up",
     location: "Madison Park",
   },
   {
-    id: 19,
+    id: 18,
     src: "/images/DSCF2930.jpg",
     alt: "The art of waiting in New York's iconic delicatessen.",
     title: "Patience",
     location: "Katz Delicatessen",
   },
     {
-    id: 20,
+    id: 19,
     src: "/images/DSCF2758.jpg",
     alt: "Navigation and direction in the urban maze.",
     title: "How to get where you are going",
     location: "Grand Central",
   },
   
-  {
-    id: 21,
-    src: "/images/IMG_0470.jpg",
-    alt: ".",
-    title: "The Corner",
-    location: "5th Ave",
+ 
+    {
+    id: 20,
+    src: "/images/IMG_0673.jpg",
+    alt: "A homeless person sleeping across the street from a luxury furniture showroom",
+    title: "Homeless outside store",
+    location: "32nd Street",
   },
 ]
 
