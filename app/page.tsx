@@ -46,7 +46,7 @@ var photos = [
     id: 6,
     src: "/images/DSCF2517-2.jpg",
     alt: "",
-    title: "",
+    title: "Untitiled",
     location: "",
   },
   {
@@ -179,7 +179,7 @@ export default function StreetPhotography() {
             >
               <div className="relative overflow-hidden bg-zinc-100 rounded-sm">
                 <Image
-                  src={photo.src || "/placeholder.svg"}
+                  src={(photo.src?photo.src.replace('images/','images/reduced/'):null) || "/placeholder.svg"}
                   alt={photo.alt}
                   width={600}
                   height={400}
