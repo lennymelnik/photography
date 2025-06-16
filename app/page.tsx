@@ -288,14 +288,14 @@ export default function StreetPhotography() {
                   {/* Navigation Buttons */}
                   <button
                     onClick={() => navigatePhoto("prev")}
-                    className="absolute left-6 top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
+                    className="absolute left-6 bottom-5 -translate-y-1/2 z-40 p-4 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
                   >
                     <ArrowLeft className="h-6 w-6" />
                   </button>
 
                   <button
                     onClick={() => navigatePhoto("next")}
-                    className="absolute right-6 top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
+                    className="absolute right-6 bottom-6 -translate-y-1/2 z-40 p-4 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-200"
                   >
                     <ArrowRight className="h-6 w-6" />
                   </button>
