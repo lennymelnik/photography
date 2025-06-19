@@ -16,11 +16,12 @@ var photos = [
   },
   {
     id: 2,
-    src: "/images/IMG_0333.jpg",
-    alt: "A clean, classic street scene capturing the essence of urban life.",
-    title: "Clean Classic",
-    location: "32nd Street",
+    src: "/images/DSCF3117.jpg",
+    alt: "Woman going down stairs",
+    title: "Inception",
+    location: "High Line",
   },
+ 
   {
     id: 3,
     src: "/images/DSCF2205.jpg",
@@ -64,12 +65,14 @@ var photos = [
     location: "31st Street",
   },
   {
-    id: 9,
-    src: "/images/DSCF2464.jpg",
-    alt: "Steam and smoke rising from the city streets creating an atmospheric scene.",
-    title: "City Smoke",
-    location: "Manhattan",
+    id: 27,
+    src: "/images/DSCF3142.jpg",
+    alt: "A child having fun with the toes of a statue in the frame",
+    title: "Untitled",
+    location: "High Line",
   },
+  
+  
   {
     id: 10,
     src: "/images/DSCF2497.jpg",
@@ -84,13 +87,14 @@ var photos = [
     title: "The Corner",
     location: "Midtown",
   },
-  {
+    {
     id: 12,
-    src: "/images/DSCF2602.jpg",
-    alt: "Two people sharing a quiet conversation in the morning rush.",
-    title: "Morning Chat",
-    location: "Grand Central",
+    src: "/images/DSCF3068.jpg",
+    alt: "Two men walking side by side carrying groceries.",
+    title: "Untitled",
+    location: "Hudson Yarns",
   },
+ 
   {
     id: 13,
     src: "/images/DSCF2938.jpg",
@@ -141,6 +145,84 @@ var photos = [
     alt: "Navigation and direction in the urban maze.",
     title: "How to get where you are going",
     location: "Grand Central",
+  },
+  {
+    id: 20,
+    src: "/images/DSCF3059.jpg",
+    alt: "A man cleaning his Halal Cart",
+    title: "Cleaning",
+    location: "Hudson Yarns",
+  },
+ {
+    id: 21,
+    src: "/images/DSCF2602.jpg",
+    alt: "Two people sharing a quiet conversation in the morning rush.",
+    title: "Morning Chat",
+    location: "Grand Central",
+  },
+  {
+    id: 22,
+    src: "/images/DSCF3076.jpg",
+    alt: "Old White Car",
+    title: "Moving On",
+    location: "Hudson Yarns",
+  },
+  {
+    id: 23,
+    src: "/images/DSCF3116.jpg",
+    alt: "Man going up stairs",
+    title: "Climbing",
+    location: "High Line",
+  },
+   {
+    id: 24,
+    src: "/images/IMG_0333.jpg",
+    alt: "A clean, classic street scene capturing the essence of urban life.",
+    title: "Clean Classic",
+    location: "32nd Street",
+  },
+  {
+    id: 25,
+    src: "/images/DSCF3119.jpg",
+    alt: "Woman taking photo on the highline",
+    title: "Enjoying the view",
+    location: "High Line",
+  },
+   {
+    id: 26,
+    src: "/images/DSCF3135.jpg",
+    alt: "A silly statue and a woman walking away from it",
+    title: "You are being silly",
+    location: "High Line",
+  },
+  
+{
+    id: 27,
+    src: "/images/DSCF2464.jpg",
+    alt: "Steam and smoke rising from the city streets creating an atmospheric scene.",
+    title: "City Smoke",
+    location: "Manhattan",
+  },
+  {
+    id: 28,
+    src: "/images/DSCF3162.jpg",
+    alt: "",
+    title: "Untitled",
+    location: "High Line",
+  },
+  {
+    id: 20,
+    src: "/images/DSCF3165.jpg",
+    alt: "Two women talking while sitting",
+    title: "Are you sure?",
+    location: "High Line",
+  },
+  {
+    id: 30,
+    src: "/images/DSCF3166.jpg",
+    alt: "A man and woman preparing to record a tiktok",
+    title: "A TikTok",
+    location: "High Line",
   },
  
   //   {
