@@ -217,14 +217,7 @@ var photos = [
     title: "Are you sure?",
     location: "High Line",
   },
-  {
-    id: 30,
-    src: "/images/DSCF3166.jpg",
-    alt: "A man and woman preparing to record a tiktok",
-    title: "A TikTok",
-    location: "High Line",
-  },
- 
+
   //   {
   //   id: 20,
   //   src: "/images/IMG_0673.jpg",
