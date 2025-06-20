@@ -11,7 +11,7 @@ var photos = [
     id: 1,
     src: "/images/DSCF2795.jpg",
     alt: "Two people leaning on a subway column from opposite sides as the 6 train arrives.",
-    title: "Two Strangers Same Idea",
+    title: "Two Strangers",
     location: "Grand Central 6 Train Platform",
   },
   {
@@ -59,13 +59,13 @@ var photos = [
   },
   {
     id: 8,
-    src: "/images/IMG_0702.jpg",
-    alt: "A man stumbling",
-    title: "Stumbling",
-    location: "31st Street",
+    src: "/images/DSCF3165.jpg",
+    alt: "Two women talking while sitting",
+    title: "Are you sure?",
+    location: "High Line",
   },
   {
-    id: 27,
+    id: 9,
     src: "/images/DSCF3142.jpg",
     alt: "A child having fun with the toes of a statue in the frame",
     title: "Untitled",
@@ -210,13 +210,7 @@ var photos = [
     title: "Untitled",
     location: "High Line",
   },
-  {
-    id: 20,
-    src: "/images/DSCF3165.jpg",
-    alt: "Two women talking while sitting",
-    title: "Are you sure?",
-    location: "High Line",
-  },
+ 
 
   //   {
   //   id: 20,
