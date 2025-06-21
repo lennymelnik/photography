@@ -210,6 +210,13 @@ var photos = [
     title: "Untitled",
     location: "High Line",
   },
+  {
+    id: 29,
+    src: "/images/DSCF3239.jpg",
+    alt: "",
+    title: "Construction",
+    location: "Lords Valley, PA",
+  },
  
 
   //   {
